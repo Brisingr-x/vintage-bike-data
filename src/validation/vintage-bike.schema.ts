@@ -4,8 +4,8 @@ import {
   BOTTOM_BRACKET_STANDARDS,
   FRAME_MATERIALS,
   HEADSET_STANDARDS,
-} from "../types/index.js";
-import type { VintageBicycle as VintageBicycleContract } from "../types/index.js";
+} from "../types/index";
+import type { VintageBicycle as VintageBicycleContract } from "../types/index";
 
 export const bicycleCategorySchema = z.enum(BICYCLE_CATEGORIES);
 export const frameMaterialSchema = z.enum(FRAME_MATERIALS);

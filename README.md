@@ -25,12 +25,29 @@ npm run typecheck
 npm test
 ```
 
+## Web directory
+
+Start the Next.js bicycle directory locally with:
+
+```sh
+npm run dev
+```
+
+The web directory supports make/model search and category filtering. Bicycle
+specifications and JSON inspection are available from each record's detail page.
+
 ## Database schema and migrations
 
 The Drizzle schema is defined in `src/db/schema.ts`. Generate SQL migrations with:
 
 ```sh
 npm run db:generate
+```
+
+Explore and edit the schema with Drizzle Studio:
+
+```sh
+npm run db:studio
 ```
 
 Apply generated migrations with:

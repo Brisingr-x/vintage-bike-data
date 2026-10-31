@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 
 import sample from "../src/seed/1988-stumpjumper.json" with { type: "json" };
-import { vintageBicycleSchema } from "../src/validation/vintage-bike.schema.js";
+import { vintageBicycleSchema } from "../src/validation/vintage-bike.schema";
 
 describe("vintage bike validation", () => {
   it("accepts the 1988 Stumpjumper sample record", () => {

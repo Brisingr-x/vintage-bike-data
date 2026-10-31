@@ -17,7 +17,7 @@ import type {
   DrivetrainSpecification,
   FrameSpecification,
   WheelSpecification,
-} from "../types/index.js";
+} from "../types/index";
 
 const bicycleCategories = [
   "road",
