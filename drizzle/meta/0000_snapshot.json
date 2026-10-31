@@ -1,0 +1,310 @@
+{
+  "id": "edce04aa-5ad0-4d3f-9c7e-595223cd49d0",
+  "prevId": "00000000-0000-0000-0000-000000000000",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.vintage_bicycles": {
+      "name": "vintage_bicycles",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "make": {
+          "name": "make",
+          "type": "varchar(128)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "model": {
+          "name": "model",
+          "type": "varchar(128)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "model_year": {
+          "name": "model_year",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "category": {
+          "name": "category",
+          "type": "bicycle_category",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "documentation": {
+          "name": "documentation",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "frame_specification": {
+          "name": "frame_specification",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "drivetrain_specification": {
+          "name": "drivetrain_specification",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "brake_specification": {
+          "name": "brake_specification",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "wheel_specification": {
+          "name": "wheel_specification",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "cockpit_specification": {
+          "name": "cockpit_specification",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "raw_data": {
+          "name": "raw_data",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {
+        "vintage_bicycles_make_model_year_idx": {
+          "name": "vintage_bicycles_make_model_year_idx",
+          "columns": [
+            {
+              "expression": "make",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "model",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "model_year",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "vintage_bicycles_model_idx": {
+          "name": "vintage_bicycles_model_idx",
+          "columns": [
+            {
+              "expression": "model",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "vintage_bicycles_model_year_idx": {
+          "name": "vintage_bicycles_model_year_idx",
+          "columns": [
+            {
+              "expression": "model_year",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "vintage_bicycles_category_idx": {
+          "name": "vintage_bicycles_category_idx",
+          "columns": [
+            {
+              "expression": "category",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "vintage_bicycles_documentation_gin_idx": {
+          "name": "vintage_bicycles_documentation_gin_idx",
+          "columns": [
+            {
+              "expression": "documentation",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "gin",
+          "with": {}
+        },
+        "vintage_bicycles_frame_spec_gin_idx": {
+          "name": "vintage_bicycles_frame_spec_gin_idx",
+          "columns": [
+            {
+              "expression": "frame_specification",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "gin",
+          "with": {}
+        },
+        "vintage_bicycles_drivetrain_spec_gin_idx": {
+          "name": "vintage_bicycles_drivetrain_spec_gin_idx",
+          "columns": [
+            {
+              "expression": "drivetrain_specification",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "gin",
+          "with": {}
+        },
+        "vintage_bicycles_brake_spec_gin_idx": {
+          "name": "vintage_bicycles_brake_spec_gin_idx",
+          "columns": [
+            {
+              "expression": "brake_specification",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "gin",
+          "with": {}
+        },
+        "vintage_bicycles_wheel_spec_gin_idx": {
+          "name": "vintage_bicycles_wheel_spec_gin_idx",
+          "columns": [
+            {
+              "expression": "wheel_specification",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "gin",
+          "with": {}
+        },
+        "vintage_bicycles_cockpit_spec_gin_idx": {
+          "name": "vintage_bicycles_cockpit_spec_gin_idx",
+          "columns": [
+            {
+              "expression": "cockpit_specification",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "gin",
+          "with": {}
+        },
+        "vintage_bicycles_raw_data_gin_idx": {
+          "name": "vintage_bicycles_raw_data_gin_idx",
+          "columns": [
+            {
+              "expression": "raw_data",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "gin",
+          "with": {}
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    }
+  },
+  "enums": {
+    "public.bicycle_category": {
+      "name": "bicycle_category",
+      "schema": "public",
+      "values": [
+        "road",
+        "track",
+        "vintage-mtb",
+        "touring",
+        "city",
+        "gravel"
+      ]
+    }
+  },
+  "schemas": {},
+  "sequences": {},
+  "roles": {},
+  "policies": {},
+  "views": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}

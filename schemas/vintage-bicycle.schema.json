@@ -1,0 +1,262 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vintage-bike-data.example/schemas/vintage-bicycle.schema.json",
+  "title": "VintageBicycle",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "make",
+    "model",
+    "modelYear",
+    "category",
+    "documentation",
+    "frame",
+    "drivetrain",
+    "brakes",
+    "wheels",
+    "cockpit"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Stable identifier for the document."
+    },
+    "make": {
+      "type": "string",
+      "minLength": 2
+    },
+    "model": {
+      "type": "string",
+      "minLength": 2
+    },
+    "modelYear": {
+      "type": "integer",
+      "minimum": 1900,
+      "maximum": 2100
+    },
+    "category": {
+      "type": "string",
+      "enum": ["road", "track", "vintage-mtb", "touring", "city", "gravel"]
+    },
+    "documentation": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "source": { "type": "string" },
+        "url": { "type": "string", "format": "uri" },
+        "retrievedFrom": { "type": "string" },
+        "notes": { "type": "string" }
+      }
+    },
+    "frame": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "material",
+        "tubing",
+        "constructionType",
+        "bottomBracketStandard",
+        "headsetStandard",
+        "rearSpacing",
+        "forkType",
+        "geometry"
+      ],
+      "properties": {
+        "material": {
+          "type": "string",
+          "enum": ["steel", "chromoly", "aluminum", "titanium", "carbon"]
+        },
+        "tubing": { "type": "string", "minLength": 2 },
+        "constructionType": { "type": "string", "minLength": 2 },
+        "bottomBracketStandard": {
+          "type": "string",
+          "enum": ["English threaded", "French threaded", "Italian threaded", "BB30", "BSA"]
+        },
+        "headsetStandard": {
+          "type": "string",
+          "enum": ["1-inch threaded", "1-1/8 inch threaded", "1-1/8 inch threadless", "1.5 inch"]
+        },
+        "rearSpacing": { "type": "string", "minLength": 2 },
+        "forkType": { "type": "string", "minLength": 2 },
+        "geometry": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "seatTubeLengthMm",
+            "topTubeLengthMm",
+            "headTubeAngleDeg",
+            "seatTubeAngleDeg",
+            "chainstayLengthMm",
+            "wheelbaseMm"
+          ],
+          "properties": {
+            "seatTubeLengthMm": { "type": "integer", "minimum": 1 },
+            "topTubeLengthMm": { "type": "integer", "minimum": 1 },
+            "headTubeAngleDeg": { "type": "number", "minimum": 40, "maximum": 90 },
+            "seatTubeAngleDeg": { "type": "number", "minimum": 40, "maximum": 90 },
+            "chainstayLengthMm": { "type": "integer", "minimum": 1 },
+            "wheelbaseMm": { "type": "integer", "minimum": 1 }
+          }
+        }
+      }
+    },
+    "drivetrain": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["groupset", "chain", "crankset"],
+      "properties": {
+        "groupset": { "type": "string", "minLength": 2 },
+        "chain": { "type": "string", "minLength": 2 },
+        "crankset": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["brand", "model", "chainringTeeth"],
+          "properties": {
+            "brand": { "type": "string", "minLength": 2 },
+            "model": { "type": "string", "minLength": 2 },
+            "chainringTeeth": {
+              "type": "array",
+              "items": { "type": "integer", "minimum": 1 },
+              "minItems": 1
+            },
+            "bottomBracketStandard": { "type": "string" }
+          }
+        },
+        "frontDerailleur": { "$ref": "#/$defs/derailleur" },
+        "rearDerailleur": { "$ref": "#/$defs/derailleur" },
+        "shifters": { "$ref": "#/$defs/shifter" },
+        "freewheel": { "$ref": "#/$defs/freewheel" }
+      }
+    },
+    "brakes": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "front", "rear", "levers"],
+      "properties": {
+        "type": { "type": "string", "minLength": 2 },
+        "front": { "$ref": "#/$defs/brakeComponent" },
+        "rear": { "$ref": "#/$defs/brakeComponent" },
+        "levers": { "$ref": "#/$defs/brakeLevers" }
+      }
+    },
+    "wheels": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["rimSize", "rimStandard", "hubModel", "rearSpacing", "tireCompatibility", "brakeSurface"],
+      "properties": {
+        "rimSize": { "type": "string", "minLength": 2 },
+        "rimStandard": { "type": "string", "minLength": 2 },
+        "hubModel": { "type": "string", "minLength": 2 },
+        "rearSpacing": { "type": "string", "minLength": 2 },
+        "tireCompatibility": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["widthMm", "bead", "tubeless"],
+          "properties": {
+            "widthMm": {
+              "type": "array",
+              "items": { "type": "integer", "minimum": 1 },
+              "minItems": 1
+            },
+            "bead": { "type": "string", "minLength": 2 },
+            "tubeless": { "type": "boolean" }
+          }
+        },
+        "brakeSurface": { "type": "string", "minLength": 2 }
+      }
+    },
+    "cockpit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["handlebar", "stem", "saddle"],
+      "properties": {
+        "handlebar": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["material", "widthMm", "riseMm", "barType"],
+          "properties": {
+            "material": { "type": "string", "minLength": 2 },
+            "widthMm": { "type": "integer", "minimum": 1 },
+            "riseMm": { "type": "integer", "minimum": 0 },
+            "barType": { "type": "string", "minLength": 2 }
+          }
+        },
+        "stem": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["material", "lengthMm", "riseMm"],
+          "properties": {
+            "material": { "type": "string", "minLength": 2 },
+            "lengthMm": { "type": "integer", "minimum": 1 },
+            "riseMm": { "type": "integer", "minimum": 0 }
+          }
+        },
+        "saddle": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["material", "model"],
+          "properties": {
+            "material": { "type": "string", "minLength": 2 },
+            "model": { "type": "string", "minLength": 2 }
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "derailleur": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["brand", "model", "type"],
+      "properties": {
+        "brand": { "type": "string", "minLength": 2 },
+        "model": { "type": "string", "minLength": 2 },
+        "type": { "type": "string", "minLength": 2 }
+      }
+    },
+    "shifter": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["brand", "model", "type"],
+      "properties": {
+        "brand": { "type": "string", "minLength": 2 },
+        "model": { "type": "string", "minLength": 2 },
+        "type": { "type": "string", "minLength": 2 }
+      }
+    },
+    "freewheel": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["speed", "spacing", "cogs"],
+      "properties": {
+        "speed": { "type": "integer", "minimum": 1 },
+        "spacing": { "type": "string", "minLength": 2 },
+        "cogs": {
+          "type": "array",
+          "items": { "type": "integer", "minimum": 1 },
+          "minItems": 1
+        }
+      }
+    },
+    "brakeComponent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["brand", "model", "type"],
+      "properties": {
+        "brand": { "type": "string", "minLength": 2 },
+        "model": { "type": "string", "minLength": 2 },
+        "type": { "type": "string", "minLength": 2 }
+      }
+    },
+    "brakeLevers": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["brand", "model", "type"],
+      "properties": {
+        "brand": { "type": "string", "minLength": 2 },
+        "model": { "type": "string", "minLength": 2 },
+        "type": { "type": "string", "minLength": 2 }
+      }
+    }
+  }
+}

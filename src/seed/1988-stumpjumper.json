@@ -1,0 +1,106 @@
+{
+  "id": "1988-specialized-stumpjumper",
+  "make": "Specialized",
+  "model": "Stumpjumper",
+  "modelYear": 1988,
+  "category": "vintage-mtb",
+  "documentation": {
+    "source": "Specialized catalog",
+    "retrievedFrom": "archival brochure",
+    "notes": "1988 model year, 26-inch mountain bike."
+  },
+  "frame": {
+    "material": "steel",
+    "tubing": "double-butted steel",
+    "constructionType": "butted frame",
+    "bottomBracketStandard": "English threaded",
+    "headsetStandard": "1-inch threaded",
+    "rearSpacing": "126 mm",
+    "forkType": "steel rigid fork",
+    "geometry": {
+      "seatTubeLengthMm": 430,
+      "topTubeLengthMm": 560,
+      "headTubeAngleDeg": 71.5,
+      "seatTubeAngleDeg": 71,
+      "chainstayLengthMm": 430,
+      "wheelbaseMm": 1005
+    }
+  },
+  "drivetrain": {
+    "groupset": "Shimano Deore XT",
+    "chain": "1/2 x 1/8",
+    "crankset": {
+      "brand": "Shimano",
+      "model": "Deore XT",
+      "chainringTeeth": [42, 32, 22],
+      "bottomBracketStandard": "English threaded"
+    },
+    "frontDerailleur": {
+      "brand": "Shimano",
+      "model": "Deore XT",
+      "type": "bottom pull"
+    },
+    "rearDerailleur": {
+      "brand": "Shimano",
+      "model": "Deore XT",
+      "type": "screw-type"
+    },
+    "shifters": {
+      "brand": "Shimano",
+      "model": "ST-EF",
+      "type": "indexed"
+    },
+    "freewheel": {
+      "speed": 7,
+      "spacing": "126 mm",
+      "cogs": [14, 16, 18, 21, 24, 28, 34]
+    }
+  },
+  "brakes": {
+    "type": "cantilever",
+    "front": {
+      "brand": "Shimano",
+      "model": "XTR",
+      "type": "cantilever"
+    },
+    "rear": {
+      "brand": "Shimano",
+      "model": "XTR",
+      "type": "cantilever"
+    },
+    "levers": {
+      "brand": "Shimano",
+      "model": "ST-EF",
+      "type": "linear-pull"
+    }
+  },
+  "wheels": {
+    "rimSize": "26 x 1.9",
+    "rimStandard": "ISO 559",
+    "hubModel": "Shimano Deore",
+    "rearSpacing": "126 mm",
+    "tireCompatibility": {
+      "widthMm": [44, 50],
+      "bead": "wire",
+      "tubeless": false
+    },
+    "brakeSurface": "rim"
+  },
+  "cockpit": {
+    "handlebar": {
+      "material": "steel",
+      "widthMm": 620,
+      "riseMm": 30,
+      "barType": "flat"
+    },
+    "stem": {
+      "material": "steel",
+      "lengthMm": 90,
+      "riseMm": 0
+    },
+    "saddle": {
+      "material": "leather",
+      "model": "Specialized"
+    }
+  }
+}
